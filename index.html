@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favoritismos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artistas, Deportistas y Cantantes Favoritos</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+
+    .card {
+      margin-bottom: 20px;
+      background-color: aqua;
+    }
+  </style>
 </head>
 <body>
-    
+
+<div class="container">
+  <h1 class="mt-5">Personajes Favoritos</h1>
+  <div id="artistas" class="row">
+
+  </div>
+</div>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+
+  const personasFavoritas = [
+    { nombre: "Michael Jordan", profesion: "Deportista", deporte: "Baloncesto" },
+    { nombre: "Leonardo DiCaprio", profesion: "Actor" },
+    { nombre: "Beyoncé", profesion: "Cantante" },
+    { nombre: "Frida Kahlo", profesion: "Artista", campo: "Pintura" },
+    { nombre: "Serena Williams", profesion: "Deportista", deporte: "Tenis" },
+    { nombre: "Eminem", profesion: "Cantante", genero: "Rap" },
+    { nombre: "Cristiano Ronaldo", profesion: "Deportista", deporte: "Fútbol" },
+    { nombre: "Taylor Swift", profesion: "Cantante" },
+    { nombre: "Vincent van Gogh", profesion: "Artista", campo: "Pintura" },
+    { nombre: "Usain Bolt", profesion: "Deportista", deporte: "Atletismo" }
+  ];
+
+
+  function mostrarPersonasFavoritas() {
+    const container = document.getElementById("artistas");
+
+    personasFavoritas.forEach(persona => {
+      const card = document.createElement("div");
+      card.classList.add("col-md-4");
+
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${persona.nombre}</h5>
+            <p class="card-text">Profesión: ${persona.profesion}</p>
+            ${persona.deporte ? `<p class="card-text">Deporte: ${persona.deporte}</p>` : ""}
+            ${persona.campo ? `<p class="card-text">Campo: ${persona.campo}</p>` : ""}
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+
+  document.addEventListener("DOMContentLoaded", mostrarPersonasFavoritas);
+</script>
+
 </body>
 </html>
